@@ -40,6 +40,29 @@ class Game:
             self.words[2 * i + 1], self.words[2 * j +
                                               1] = self.words[2 * j + 1], self.words[2 * i + 1]
 
+    def slice_words(self):
+        sliced = False
+        while not sliced:
+            try:
+                print('Enter number of word you want to start from')
+                start = int(input())
+                print('Enter number of word you want to end at')
+                end = int(input())
+                if start < 0 and end >= len(self.words // 2):
+                    print('Incorrect value. Try again')
+                else:
+                    sliced = True
+            except ValueError:
+                print('Not a number entered. Try again')
+
+        start -= 1
+        end -= 1
+        start *= 2
+        end *= 2
+        end += 2
+        self.words = self.words[start:end]
+        print(self.words)
+
     def play(self):
         """
         Checking if user knows vocabulary

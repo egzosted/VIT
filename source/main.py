@@ -20,6 +20,12 @@ while(end != 'q'):
         end = 'q'
         continue
 
+    print(f'Do you want to diminish number of words [y/n] (current {len(game.words) // 2})')
+    change_words = input().lower()
+
+    if change_words == 'y':
+        game.slice_words()
+
     game.play()
     game.summarize()
     print('Press q to quit, different value will start new game')
