@@ -67,7 +67,8 @@ class Game:
         """
         Checking if user knows vocabulary
         """
-        for i in range(len(self.words) // 2):
+        i = 0
+        while i < len(self.words) // 2:
             correct = self.words[2 * i]
             word = self.words[2 * i + 1]
             print(word)
@@ -75,10 +76,16 @@ class Game:
             if answer == correct:
                 self.points += 1
                 print('Ok')
+            elif answer == 'h':
+                print(correct[0], correct[1], end='', sep='')
+                for j in range(2, len(correct)):
+                    print('*', end='')
+                i -= 1
             else:
                 print(f'Mistake. Correct answer is {correct}')
                 self.mistakes.append(correct)
                 self.mistakes.append(word)
+            i += 1
             print()
 
     def summarize(self):
